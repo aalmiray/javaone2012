@@ -18,7 +18,7 @@ application(title: app.getMessage('application.title'),
     }
     migLayout(layoutConstraints: 'fill')
     scrollPane(constraints: 'west, w 180!', border: titledBorder(app.getMessage('contacts.label'))) {
-        list(id: 'contactList')
+        list(id: 'contactList', model: eventListModel(source: model.contacts))
     }
     panel(constraints: 'center, grow', border: titledBorder(title: app.getMessage('contact.label'))) {
         migLayout(layoutConstraints: 'fill')
