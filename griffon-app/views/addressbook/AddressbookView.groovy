@@ -21,7 +21,13 @@ application(title: app.getMessage('application.title'),
         list(id: 'contactList')
     }
     panel(constraints: 'center, grow', border: titledBorder(title: app.getMessage('contact.label'))) {
-        label 'Empty (for now)'
+        migLayout(layoutConstraints: 'fill')
+        for (propName in Contact.PROPERTIES) {
+            String key = "addressbook.Contact.${propName}.label"
+            label(text: app.getMessage(key, GriffonNameUtils.getNaturalName(propName)) + ':', constraints: 'right')
+            textField(columns: 30, constraints: 'grow, wrap', name: "${propName}TextField",
+                text: bind(propName, source: model, mutual: true))
+        }
     }
     panel(constraints: 'east, grow', border: titledBorder(title: app.getMessage('actions.label'))) {
         migLayout(layoutConstraints: 'fill, wrap')

@@ -2,6 +2,11 @@ package addressbook
 
 import groovy.beans.Bindable
 
+@Bindable
 class AddressbookModel {
-   // @Bindable String propName
+    String name
+    String lastname
+    String address
+    String company
+    String email
 }

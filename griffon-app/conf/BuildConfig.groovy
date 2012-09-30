@@ -192,3 +192,5 @@ log4j = {
 
 app.fileType = '.groovy'
 app.defaultPackageName = 'addressbook'
+
+griffon.enable.native2ascii = true
