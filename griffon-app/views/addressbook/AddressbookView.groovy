@@ -18,7 +18,18 @@ application(title: app.getMessage('application.title'),
     }
     migLayout(layoutConstraints: 'fill')
     scrollPane(constraints: 'west, w 180!', border: titledBorder(app.getMessage('contacts.label'))) {
-        list(id: 'contactList', model: eventListModel(source: model.contacts))
+        list(id: 'contactList', model: eventListModel(source: model.contacts),
+             selectionMode: ListSelectionModel.SINGLE_SELECTION,
+             keyReleased: { e ->  // enter/return key
+                 if (e.keyCode != KeyEvent.VK_ENTER) return
+                 int index = e.source.selectedIndex
+                 if (index > -1) model.selectedIndex = index
+             },
+             mouseClicked: { e -> // double click
+                 if (e.clickCount != 2) return
+                 int index = e.source.locationToIndex(e.point)
+                 if (index > -1) model.selectedIndex = index
+             })
     }
     panel(constraints: 'center, grow', border: titledBorder(title: app.getMessage('contact.label'))) {
         migLayout(layoutConstraints: 'fill')
