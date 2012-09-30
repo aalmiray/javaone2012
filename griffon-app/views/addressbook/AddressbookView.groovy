@@ -1,6 +1,6 @@
 package addressbook
 
-application(title: 'Addressbook',
+application(title: app.getMessage('application.title'),
   pack: true,
   resizable: true,
   locationByPlatform:true,
@@ -9,7 +9,7 @@ application(title: 'Addressbook',
                imageIcon('/griffon-icon-32x32.png').image,
                imageIcon('/griffon-icon-16x16.png').image]) {
     menuBar {
-        menu('Contacts') {
+        menu(app.getMessage('contacts.label')) {
             menuItem(newAction)
             menuItem(saveAction)
             menuItem(deleteAction)
@@ -17,13 +17,13 @@ application(title: 'Addressbook',
         }
     }
     migLayout(layoutConstraints: 'fill')
-    scrollPane(constraints: 'west, w 180!', border: titledBorder('Contacts')) {
+    scrollPane(constraints: 'west, w 180!', border: titledBorder(app.getMessage('contacts.label'))) {
         list(id: 'contactList')
     }
-    panel(constraints: 'center, grow', border: titledBorder(title: 'Contact')) {
+    panel(constraints: 'center, grow', border: titledBorder(title: app.getMessage('contact.label'))) {
         label 'Empty (for now)'
     }
-    panel(constraints: 'east, grow', border: titledBorder(title: 'Actions')) {
+    panel(constraints: 'east, grow', border: titledBorder(title: app.getMessage('actions.label'))) {
         migLayout(layoutConstraints: 'fill, wrap')
         button(newAction)
         button(saveAction)
